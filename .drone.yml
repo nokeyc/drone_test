@@ -5,3 +5,5 @@ name: springboot_test_drone
 step:
   - name: package
     image: maven:openjdk
+    command:
+      - mvn clean package
