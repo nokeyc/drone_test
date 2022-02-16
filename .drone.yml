@@ -4,5 +4,11 @@ name: default
 steps:
 - name: test
   image: maven:3-jdk-10
+  volumes:
+  -name: maven-build
+  path: /app
   commands:
   - mvn clean package
+  - cp target/springboot-0.0.1-SNAPSHOT.jar /app/springboot-0.0.1-SNAPSHOT.jar
+  - cp Dockerfile /app/Dockerfile
+  - cp buildrun.sh /app/buildrun.sh
