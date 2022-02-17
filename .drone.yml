@@ -1,22 +1,11 @@
 kind: pipeline
 name: default
 
-steps:
-  - name: package
-    image: maven:openjdk
-    volumes:
-      - name: maven-build
-        path: /app
-    commands:
-      - mvn clean package
-      - cp target/springboot-0.0.1-SNAPSHOT.jar /app/springboot-0.0.1-SNAPSHOT.jar
-      - cp Dockerfile /app/Dockerfile
-      - cp buildrun.sh /app/buildrun.sh
-      
+steps:    
   - name: build
-    image: appleboy/drone-ssh
+    image: appleboy/drone-ssh:latest
     setting: 
-      host: drone-server
+      host: nokeyc
       username: root
       password:
         from_secret: 10.199_SSH_KEY
