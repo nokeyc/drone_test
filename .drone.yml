@@ -16,7 +16,7 @@ steps:
   - name: build
     image: appleboy/drone-ssh
     setting: 
-      host: 192.168.10.199
+      host: drone-server
       username: root
       password:
         from_secret: 10.199_SSH_KEY
