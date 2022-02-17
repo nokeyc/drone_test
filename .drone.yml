@@ -15,9 +15,18 @@ steps:
         - cd /app
         - rm -rf *
   
+  - name: package
+    image: maven:openjdk
+    volumes:
+      - name: maven-build
+        path: /app
+    commands:
+      - mvn clean package
+      - cp target/springboot-0.0.1-SNAPSHOT.jar /app/springboot-0.0.1-SNAPSHOT.jar
+      - cp Dockerfile /app/Dockerfile
+      - cp buildrun.sh /app/buildrun.sh
   
-  
-  - name: build-start
+  - name: build_&_run
     image: appleboy/drone-ssh
     settings:
       host: 192.168.10.199
