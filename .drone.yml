@@ -6,9 +6,12 @@ steps:
     image: appleboy/drone-ssh
     username: root
     password: 1qaz2wsx
-    host: 65fd-154-222-0-1.ngrok.io
+    host: drone-server
     port: 22
     command_timeout: 180
+    volumes:
+      -name: key_path
+       key_path: /root/.ssh/id_rsa.pub
     script:
       - cd /app
       - ./buildrun.sh
@@ -16,3 +19,6 @@ volumes:
   - name: maven-build
     host: 
       path: /app 
+  - name: key_path
+    host:
+      path: /root/.ssh/id_rsa.pub
