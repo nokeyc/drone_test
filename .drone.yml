@@ -3,7 +3,7 @@ name: default
 
 steps:
   - name: build
-    images: centos:latest
+    images: centos:centos7.9.2009
     commands:
       - ssh root@192.168.10.199
       - 1qaz2wsx
