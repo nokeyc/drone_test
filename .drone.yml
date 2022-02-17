@@ -3,7 +3,7 @@ name: default
 
 steps:    
   - name: build
-    image: appleboy/drone-ssh:latest
+    image: appleboy/drone-ssh:1.6.3
     setting: 
       host: 192.168.10.199
       username: root
