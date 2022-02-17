@@ -2,7 +2,7 @@ kind: pipeline
 name: default
 
 steps:
-  - name: backand
+  - name: prepare
     image: appleboy/drone-ssh
     settings:
       host: 192.168.10.199
