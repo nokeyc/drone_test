@@ -3,13 +3,13 @@ name: default
 
 steps:
   - name: build
-      images: centos:latest
-      commands:
-        - ssh root@192.168.10.199
-        - 1qaz2wsx
-        - yes
-        - cd /app
-        - sh buildrun.sh
+    images: centos:latest
+    commands:
+      - ssh root@192.168.10.199
+      - 1qaz2wsx
+      - yes
+      - cd /app
+      - sh buildrun.sh
 volumes: 
   - name: maven-build
     host: 
