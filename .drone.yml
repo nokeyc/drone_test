@@ -3,17 +3,15 @@ name: default
 
 steps:    
   - name: build
-    image: appleboy/drone-ssh:1.6.3
-    setting: 
-      host: 192.168.10.199
-      username: root
-      user: root
-      password:
-        from_secret: 10.199_SSH_KEY
-      port: 22
-      script:
-        - cd /app
-        - ./buildrun.sh
+    image: appleboy/drone-ssh
+    pull: true
+    secrets: [ 10.199_SSH_USER,10.199_SSH_PWD ]
+    host: 192.168.10.199
+    port: 22
+    command_timeout: 180
+    script:
+      - cd /app
+      - ./buildrun.sh
 volumes: 
   - name: maven-build
     host: 
