@@ -19,6 +19,3 @@ volumes:
   - name: maven-build
     host: 
       path: /app 
-  - name: key_path
-    host:
-      path: /root/.ssh/id_rsa.pub
