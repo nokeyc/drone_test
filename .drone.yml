@@ -1,17 +1,19 @@
 kind: pipeline
 name: default
 
-steps:    
-  - name: build
-    image: appleboy/drone-ssh
-    username: root
-    password: 1qaz2wsx
+steps:
+- name: ssh
+  image: appleboy/drone-ssh
+  settings:
     host: drone-server
+    username: 
+      from_secret: 10.199_SSH_USER
+    key: 
+      from_secret: 10.199_SSH_PWD
     port: 22
-    command_timeout: 180
     script:
       - cd /app
-      - ./buildrun.sh
+      - sh buildrun.sh
 volumes: 
   - name: maven-build
     host: 
