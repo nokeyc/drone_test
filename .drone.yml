@@ -3,7 +3,7 @@ name: default
 
 steps:
 - name: test
-  image: maven:3-jdk-10
+  image: maven:openjdk
   volumes:
   -name: maven-build
   path: /app
