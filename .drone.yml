@@ -2,14 +2,18 @@ kind: pipeline
 name: default
 
 steps:
-  - name: build
-    images: centos:centos7
-    commands:
-      - ssh root@192.168.10.199
-      - 1qaz2wsx
-      - yes
-      - cd /app
-      - sh buildrun.sh
+  - name: build-start
+    image: appleboy/drone-ssh
+    settings:
+      host: 192.168.10.199
+      username: root
+      password: 
+        from_secret: 10.199_SSH_PWD
+      port: 22 
+      command_timeout: 180
+      script:
+        - cd /app
+        - sh buildrun.sh
 volumes: 
   - name: maven-build
     host: 
