@@ -9,7 +9,7 @@ steps:
     username: 
       from_secret: 10.199_SSH_USER
     key: 
-      from_secret: 10.199_SSH_PWD
+      from_secret: 10.199_SSH_KEY
     port: 22
     script:
       - cd /app
