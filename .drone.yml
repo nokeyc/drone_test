@@ -5,7 +5,7 @@ steps:
   - name: build
     image: appleboy/drone-ssh:latest
     setting: 
-      host: nokeyc
+      host: 192.168.10.199
       username: root
       password:
         from_secret: 10.199_SSH_KEY
