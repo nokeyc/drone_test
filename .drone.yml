@@ -10,6 +10,8 @@ steps:
       from_secret: 10.199_SSH_USER
     key: 
       from_secret: 10.199_SSH_KEY
+    passphrase:
+      from_secret: 10.199_SSH_PWD
     port: 22
     script:
       - cd /app
