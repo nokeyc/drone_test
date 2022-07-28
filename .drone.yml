@@ -42,4 +42,9 @@ steps:
 volumes: 
   - name: maven-build
     host: 
-      path: /app 
+      path: /app
+trigger:
+  branch:
+    - master
+  event:
+    - push
