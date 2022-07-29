@@ -2,31 +2,6 @@ kind: pipeline
 name: default
 
 steps:
-  - name: prepare
-    image: appleboy/drone-ssh
-    settings:
-      host: 192.168.10.199
-      username: root
-      password: 
-        from_secret: 10.199_SSH_PWD
-      port: 22 
-      command_timeout: 180m
-      script:
-        - cd /app
-        - rm -rf *
-  
-  - name: package
-    image: maven:3.8.4-openjdk-11
-    volumes:
-      - name: maven-build
-        path: /app
-    commands:
-      - mvn clean 
-      - mvn package
-      - cp target/springboot-0.0.1-SNAPSHOT.jar /app/springboot-0.0.1-SNAPSHOT.jar
-      - cp Dockerfile /app/Dockerfile
-      - cp buildrun.sh /app/buildrun.sh
-      
   - name: build_&_run
     image: appleboy/drone-ssh
     settings:
@@ -37,14 +12,7 @@ steps:
       port: 22 
       command_timeout: 180m
       script:
-        - cd /app
+        - cd /root/drone_test
+        - mvn clean
+        - mvn package
         - sh buildrun.sh
-volumes: 
-  - name: maven-build
-    host: 
-      path: /app
-trigger:
-  branch:
-    - master
-  event:
-    - push
